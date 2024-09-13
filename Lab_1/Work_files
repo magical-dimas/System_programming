@@ -1,0 +1,38 @@
+mkdir Work
+cd Work
+mkdir "ФИО" 
+mkdir "Лабораторная работа №1!"
+chmod -R 772 "Лабораторная работа №1!"
+chmod -R 700 "ФИО"
+touch "Text @1"
+touch "Text \$2"
+touch "Text #3"
+cat >> "Text @1"
+Птица говорун отличается умом и сообразительностью!
+Отличается умом, отличается сообразительностью...
+cat "Text @1">>"Text \$2"
+mv "Text \$2" "Лабораторная работа №1!"
+cp "Text @1" "ФИО"
+gzip "Text @1"
+gzip "Text #3"
+tar -cf MyAchiv.tar "Text @1.gz" "Text #3.gz"
+gzip -d "Text #3.gz"
+gzip -d "Text @1.gz"
+head -n 1 "Text @1" > "Text #3"
+echo "Будь осторожен! Преступник вооружен!" >> "Text #3"
+cd ..
+cd "ФИО"
+touch Result_one
+tac "Text @1" >> Result_one
+mv Result_one Result_two
+cd ..
+cd "Лфбораторная работа №1!"
+touch Result_3
+find /workspaces/System_programming/Work/"ФИО" -name 'T*' -exec cat {} >> Result_3 \;
+uname -r >> Result_3
+date "+DATE:%m/%d/%y" >> Result_3
+cd ..
+cd ..
+mkdir Lab_1
+mv Work Lab_1
+mv sandbox Lab_1
