@@ -45,6 +45,13 @@ ret
 print_num:
 xor rbx, rbx
 mov rcx, 10
+test rax, rax
+jns .loop
+push rax
+mov rax, '-'
+call print
+pop rax
+neg rax
 
 .loop:
 xor rdx, rdx

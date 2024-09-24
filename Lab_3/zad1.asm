@@ -19,9 +19,10 @@ call new_line
 call exit
 
 print:
+mov [output], rax
 mov eax, 1
 mov edi, 1
-mov rsi, rax
+mov rsi, output
 mov edx, 1
 syscall
 ret
