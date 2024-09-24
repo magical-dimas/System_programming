@@ -25,7 +25,18 @@ call str_number
 mov [c], rax
 mov rax, [c]
 add rax, [b]
+mov rbx, [c]
+test rbx, rbx
+jns fl1
+neg [c]
+mov r8, 1
+fl1:
 div [c]
+cmp r8, 1
+jne fl2
+neg [c]
+neg rax
+fl2:
 sub rax, [c]
 call print_num
 call new_line

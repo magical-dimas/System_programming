@@ -71,6 +71,11 @@ str_number:
 
     xor rax,rax
     xor rcx,rcx
+    xor r8, r8
+    cmp byte [rsi], '-'
+    jne .loop
+    inc rcx
+    mov r8, 1
 .loop:
     xor     rbx, rbx
     mov     bl, byte [rsi+rcx]
@@ -95,4 +100,9 @@ str_number:
 .restore:
     pop rbx
     pop rcx
-    ret
+    cmp r8, 1
+    jne .fin
+    neg rax
+    xor r8, r8
+.fin:
+ret
