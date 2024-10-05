@@ -10,7 +10,7 @@ int main(){
         if(strcmp(in, password) == 0){
             printf("Вошли\n");
             return 0;
-        } //!!!
+        }
         printf("Невереный пароль\n");
     }
     printf("Неудача\n");
