@@ -47,23 +47,21 @@ je .reverse_write
 cmp byte [buffer], '?'
 je .reverse_write
 mov al, [buffer]
-mov [buf+8*rcx], al
+mov [buf+rcx], al
 inc rcx
 jmp .loop_read
 .reverse_write:
 dec rcx
-mov rax, rcx
-mov rbx, 8
-mul rbx
 add rax, buf
-mov rsi, rax
+mov rsi, buf
+add rsi, rcx
 push rcx
 mov rax, 1 
 mov rdi, r9 
 mov rdx, 1
 syscall
 pop rcx
-mov [buf+rcx*8], 0
+mov [buf+rcx], 0
 cmp rcx, 0
 jg .reverse_write
 mov rsi, buffer
@@ -78,10 +76,10 @@ mov rax, buf
 call len_str
 cmp rax, 0
 je .closing
+mov rsi, buf
 mov rdx, rax
 mov rax, 1
 mov rdi, r9
-mov rsi, buf
 syscall
 .closing:
 mov rdi, r8
