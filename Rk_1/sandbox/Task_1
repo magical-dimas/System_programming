@@ -1,0 +1,17 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+codespa+       1  0.0  0.0   1136   512 ?        Ss   10:57   0:00 /sbin/docker-init -- /bin/sh -c echo Container started trap "exit 0" 15 /usr/local/share/ssh-init.sh /usr/local/share/docker-init.sh exec "$@" while sleep 1 & wait $!; do :; done - /usr/local/share/docker-init.sh /usr/local/share/ssh-init.sh sleep infinity
+codespa+       7  0.0  0.0   7236  1792 ?        S    10:57   0:00 sleep infinity
+root          35  0.0  0.0  12196  3480 ?        Ss   10:57   0:00 sshd: /usr/sbin/sshd [listener] 0 of 10-100 startups
+codespa+     392  0.0  0.0   2616  1536 ?        Ss   10:57   0:00 /bin/sh
+root         419  0.0  0.0   2616  1408 ?        Ss   10:57   0:00 /bin/sh
+codespa+     581  0.0  0.0   2624  1536 ?        Ss   10:57   0:00 sh /home/codespace/.vscode-remote/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/bin/code-server --log trace --force-disable-user-env --server-data-dir /home/codespace/.vscode-remote --accept-server-license-terms --host 127.0.0.1 --port 0 --connection-token-file /home/codespace/.vscode-remote/data/Machine/.connection-token-384ff7382de624fb94dbaf6da11977bba1ecd427 --extensions-download-dir /home/codespace/.vscode-remote/extensionsCache --start-server  --enable-remote-auto-shutdown --skip-requirements-check
+codespa+     590  4.2  1.2 11810032 103888 ?     Sl   10:57   0:08 /vscode/bin/linux-x64/384ff7382de624fb94dbaf6da11977bba1ecd427/node /vscode/bin/linux-x64/384ff7382de624fb94dbaf6da11977bba1ecd427/out/server-main.js --log trace --force-disable-user-env --server-data-dir /home/codespace/.vscode-remote --accept-server-license-terms --host 127.0.0.1 --port 0 --connection-token-file /home/codespace/.vscode-remote/data/Machine/.connection-token-384ff7382de624fb94dbaf6da11977bba1ecd427 --extensions-download-dir /home/codespace/.vscode-remote/extensionsCache --start-server  --enable-remote-auto-shutdown --skip-requirements-check
+codespa+     629  4.2  3.6 32956544 292388 ?     Sl   10:58   0:08 /vscode/bin/linux-x64/384ff7382de624fb94dbaf6da11977bba1ecd427/node --dns-result-order=ipv4first /vscode/bin/linux-x64/384ff7382de624fb94dbaf6da11977bba1ecd427/out/bootstrap-fork --type=extensionHost --transformURIs --useHostProxy=false
+codespa+     641  0.0  0.7 11727512 57556 ?      Sl   10:58   0:00 /vscode/bin/linux-x64/384ff7382de624fb94dbaf6da11977bba1ecd427/node /vscode/bin/linux-x64/384ff7382de624fb94dbaf6da11977bba1ecd427/out/bootstrap-fork --type=fileWatcher
+codespa+    1328  0.0  0.0   2616  1536 ?        Ss   10:58   0:00 /bin/sh
+root        1360  0.0  0.0   2616  1536 ?        Ss   10:58   0:00 /bin/sh
+root        1703  0.0  0.9 1982996 76468 ?       Sl   10:58   0:00 dockerd --dns 168.63.129.16
+root        1710  0.0  0.5 1798580 45260 ?       Ssl  10:58   0:00 containerd --config /var/run/docker/containerd/containerd.toml
+codespa+    2395  0.4  0.7 11595148 64716 ?      Sl   10:59   0:00 /vscode/bin/linux-x64/384ff7382de624fb94dbaf6da11977bba1ecd427/node /vscode/bin/linux-x64/384ff7382de624fb94dbaf6da11977bba1ecd427/out/bootstrap-fork --type=ptyHost --logsPath /home/codespace/.vscode-remote/data/logs/20241019T105800
+codespa+    2406  0.1  0.1  16792 11884 pts/0    Ss   10:59   0:00 /bin/bash --init-file /vscode/bin/linux-x64/384ff7382de624fb94dbaf6da11977bba1ecd427/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
+codespa+    3486  0.0  0.0  10624  3328 pts/0    R+   11:01   0:00 ps uax
