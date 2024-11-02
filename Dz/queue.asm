@@ -109,7 +109,9 @@ ret
 
 del_even:
 xor r9, r9
+mov r10, [size]
 .loop:
+xor rdx, rdx
 mov rsi, [head]
 mov rax, [rsi]
 mov r8, 2
@@ -121,20 +123,8 @@ call q_push
 .fl:
 call q_pop
 inc r9
-mov rsi, [head]
-mov rax, [rsi]
-mov r8, 2
-div r8
-ret
-cmp rdx, 0
-je .fl1
-mov rdi, [rsi]
-call q_push
-.fl1:
-call q_pop
-inc r9
-cmp r9, [size]
-;jl .loop
+cmp r9, r10
+jl .loop
 ret
 
 count_simple:
