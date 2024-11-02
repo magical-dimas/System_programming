@@ -4,9 +4,6 @@ public _start
 
 include '/workspaces/System_programming/Lab_5/func.asm'
 
-section '.bss' writable
-output dq ?
-
 section '.text' executable
 _start:
 mov rsi, [rsp+16]
