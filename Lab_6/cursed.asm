@@ -9,7 +9,6 @@ extrn getmaxx
 extrn getmaxy
 extrn raw
 extrn noecho
-extrn keypad
 extrn stdscr
 extrn move
 extrn getch
@@ -19,7 +18,6 @@ extrn endwin
 extrn exit
 extrn timeout
 extrn usleep
-extrn printw
 
 section '.bss' writable
 max_x dq 1
@@ -49,7 +47,7 @@ call refresh
 call noecho
 call raw
 
-mov rax, '0'
+mov rax, ' '
 or rax, 0x100
 mov rax, [palette]
 and rax, 0x100
@@ -57,7 +55,7 @@ and rax, 0xff
 or rax, 0x100
 mov [palette], rax
 
-mov [delay], 1500
+mov [delay], 5000
 xor r8, r8
 
 .outer_loop:
@@ -85,14 +83,14 @@ cmp rax, 'h'
 jne .skip
 cmp [speed_mode], 1
 jne .slow
-cmp [delay], 100
+cmp [delay], 2000
 jng .slow
-sub [delay], 200
+sub [delay], 2500
 .slow:
 mov [speed_mode], 0
-cmp [delay], 3000
+cmp [delay], 15000
 jnl .ch_mode
-add [delay], 200
+add [delay], 2500
 jmp .skip
 
 .ch_mode:
@@ -100,6 +98,7 @@ mov [speed_mode], 1
 jmp .check_haste
 
 .skip:
+xor rdi, rdi
 mov rdi, [delay]
 call usleep
 pop r9
