@@ -23,7 +23,7 @@ section '.bss' writable
 max_x dq 1
 max_y dq 1
 palette dq 1
-delay dq 1
+delay dq ?
 speed_mode dq 1
 
 section '.text' executable
@@ -31,8 +31,10 @@ _start:
 call initscr
 mov rdi, [stdscr]
 call getmaxx
+dec rax
 mov [max_x], rax
 call getmaxy
+dec rax
 mov [max_y], rax
 call start_color
 mov rdi, 1
@@ -49,13 +51,10 @@ call raw
 
 mov rax, ' '
 or rax, 0x100
-mov rax, [palette]
-and rax, 0x100
-and rax, 0xff
-or rax, 0x100
 mov [palette], rax
 
-mov [delay], 5000
+mov [delay], 100
+mov [speed_mode], 1
 xor r8, r8
 
 .outer_loop:
@@ -67,7 +66,7 @@ push r8
 push r9
 call move
 
-mov rdi, palette
+mov rdi, [palette]
 call addch
 call refresh
 
@@ -81,21 +80,22 @@ jmp .fin
 .check_haste:
 cmp rax, 'h'
 jne .skip
+.fast:
 cmp [speed_mode], 1
 jne .slow
-cmp [delay], 2000
+cmp [delay], 100
 jng .slow
-sub [delay], 2500
+mov [delay], 100
 .slow:
 mov [speed_mode], 0
-cmp [delay], 15000
+cmp [delay], 12600
 jnl .ch_mode
 add [delay], 2500
 jmp .skip
 
 .ch_mode:
 mov [speed_mode], 1
-jmp .check_haste
+jmp .fast
 
 .skip:
 xor rdi, rdi
