@@ -8,6 +8,7 @@ include "func.asm"
 
 section '.data' writable
 msg db "Hi, I am process number ", 0
+msg_end db "Parent process finished. Terminating process.", 0xA, 0
 buffer db 0
 pid1 dq 1
 pid2 dq 1
@@ -51,12 +52,12 @@ call number_str
 call print_str
 call new_line
 push r8
-mov rdi, 1000
+mov rdi, 3000
 call usleep
 pop r8
 dec r8
 cmp r8, 0
-jne child
+jg child
 call exit
 
 parent:
@@ -65,7 +66,7 @@ mov rsi, 18
 mov rdi, [pid1]
 syscall
 push r8
-mov rdi, 1000
+mov rdi, 2000
 call usleep
 mov rax, 62
 mov rsi, 19
@@ -75,7 +76,7 @@ mov rax, 62
 mov rsi, 18
 mov rdi, [pid2]
 syscall
-mov rdi, 1000
+mov rdi, 2000
 call usleep
 mov rax, 62
 mov rsi, 19
@@ -84,6 +85,9 @@ syscall
 pop r8
 dec r8
 cmp r8, 0
-jne parent
+jg parent
+call new_line
+mov rsi, msg_end
+call print_str
 finale:
 call exit
