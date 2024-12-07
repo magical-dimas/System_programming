@@ -50,8 +50,10 @@ mov rsi, buffer
 call number_str
 call print_str
 call new_line
-mov rdi, 10
+push r8
+mov rdi, 1000
 call usleep
+pop r8
 dec r8
 cmp r8, 0
 jne child
@@ -62,7 +64,8 @@ mov rax, 62
 mov rsi, 18
 mov rdi, [pid1]
 syscall
-mov rdi, 1
+push r8
+mov rdi, 1000
 call usleep
 mov rax, 62
 mov rsi, 19
@@ -72,12 +75,13 @@ mov rax, 62
 mov rsi, 18
 mov rdi, [pid2]
 syscall
-mov rdi, 1
+mov rdi, 1000
 call usleep
 mov rax, 62
 mov rsi, 19
 mov rdi, [pid2]
 syscall
+pop r8
 dec r8
 cmp r8, 0
 jne parent
