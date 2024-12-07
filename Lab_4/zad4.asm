@@ -40,7 +40,7 @@ jmp .cont
 .negat:
 sub r8, rbx
 .cont:
-sub rsi, 1
+dec rsi
 cmp rsi, 0
 jg .l1
 

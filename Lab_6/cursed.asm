@@ -53,7 +53,7 @@ mov rax, ' '
 or rax, 0x100
 mov [palette], rax
 
-mov [delay], 100
+mov [delay], 0
 mov [speed_mode], 1
 xor r8, r8
 
@@ -83,9 +83,9 @@ jne .skip
 .fast:
 cmp [speed_mode], 1
 jne .slow
-cmp [delay], 100
+cmp [delay], 0
 jng .slow
-mov [delay], 100
+mov [delay], 0
 .slow:
 mov [speed_mode], 0
 cmp [delay], 12600
